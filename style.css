@@ -1,3 +1,20 @@
+body {
+    background-image: url("./image/background_img.jpg");
+
+}
+
+
 .container {
+    height: 100vh;
     border: solid 1px red;
+    background-color: rgba(237, 237, 233, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main {
+    width: 80%;
+    border: solid 1px blue;
+    text-align: center;
 }
