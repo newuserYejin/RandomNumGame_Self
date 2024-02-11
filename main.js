@@ -7,6 +7,7 @@ let resultArea = document.querySelector("#resultArea")
 let chance = 5
 let chance_Area = document.querySelector("#chance_Area")
 let gif = document.querySelector("#gif")
+let userArray = []
 
 goButton.addEventListener("click", guessNum)
 userInput.addEventListener("focus", () => {
@@ -33,6 +34,15 @@ function guessNum() {
         return
     }
 
+    if (userArray.includes(userInput_Value)) {
+        resultArea.textContent = "이미 입력해본 숫자입니다."
+        gif.src = "./image/circle_gif.gif"
+        gif.style.transform = "none";
+        return
+    }
+
+    userArray.push(userInput_Value)
+
     if (userInput_Value > randomNum) {
         resultArea.textContent = "DOWN!!!(숫자를 줄여주세요)"
         gif.src = "./image/arrow_gif.gif"
@@ -56,7 +66,7 @@ function guessNum() {
 
     if (chance < 1) {
         goButton.disabled = true
-        chance_Area.textContent = "기회를 모두 소진하셨습니다.(다시 해보세요!)"
+        chance_Area.innerHTML = "기회를 모두 소진하셨습니다.<br>(다시 해보세요!)";
         gif.src = "./image/gameOver_gif.gif"
         gif.style.transform = "none";
         resultArea.textContent = "숫자 추리에 실패했어요ㅠㅠ"
